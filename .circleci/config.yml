@@ -39,4 +39,4 @@ jobs:
 
       - run: mix docs    
       - store_artifacts:
-          path: ./docs
+          path: ./doc
