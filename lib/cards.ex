@@ -7,16 +7,16 @@ defmodule Cards do
     Returns a list of strings representing a deck of playing cards
   """
   def create_deck do
-    values  = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven"]
-    suits   = ["Spades", "Clubs", "Hearts", "Diamonds"]
+    values = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven"]
+    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
 
     for suit <- suits, value <- values do
-        "#{value} of #{suit}"
+      "#{value} of #{suit}"
     end
   end
 
   def shuffle(deck) do
-      Enum.shuffle(deck)
+    Enum.shuffle(deck)
   end
 
   @doc """
@@ -24,8 +24,8 @@ defmodule Cards do
 
   ### Examples
 
-      iex> _deck = Cards.create_deck
-      iex(2)> Cards.contains?(_deck, "Ace of Spades")
+      iex> deck = Cards.create_deck
+      iex(2)> Cards.contains?(deck, "Ace of Spades")
       true
 
   """
@@ -40,8 +40,8 @@ defmodule Cards do
 
   ## Examples
 
-      iex> _deck = Cards.create_deck
-      iex> {hand, deck} = Cards.deal(_deck, 1)
+      iex> deck = Cards.create_deck
+      iex> {hand, deck} = Cards.deal(deck, 1)
       iex> hand
       ["Ace of Spades"]
   """
@@ -56,15 +56,14 @@ defmodule Cards do
 
   def load(filename) do
     case File.read(filename) do
-      {:ok, binary} -> :erlang.binary_to_term  binary
+      {:ok, binary} -> :erlang.binary_to_term(binary)
       {:error, _reason} -> "That file does not exist"
     end
   end
 
   def create_hand(hand_size) do
-      Cards.create_deck
-      |> Cards.shuffle
-      |> Cards.deal(hand_size)
+    Cards.create_deck()
+    |> Cards.shuffle()
+    |> Cards.deal(hand_size)
   end
-
 end
