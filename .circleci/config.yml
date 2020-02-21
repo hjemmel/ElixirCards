@@ -32,11 +32,11 @@ jobs:
 
       - run: mix test --cover
       - store_test_results:
-          path: _build/test/lib/cards
+          path: ./_build/test/lib/cards
 
       - store_artifacts:
-          path: /cover
+          path: ./cover
 
       - run: mix docs    
       - store_artifacts:
-          path: /docs
+          path: ./docs
